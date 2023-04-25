@@ -1,1 +1,87 @@
-<p>detail works!</p>
+<div class="min-h-screen w-full bg-slate-50 dark:bg-black relative py-16">
+  <div class="w-11/12 sm:w-2/3 mx-auto mb-8">
+    <button
+      routerLink="/home"
+      class="py-3 px-5 border-[0.025rem] border-slate-200 dark:border-zinc-800 md:px-10 shadow-sm rounded-md flex space-x-3 items-center text-zinc-600 dark:text-white"
+    >
+      <i class="fa-solid fa-arrow-left-long"></i> <span>Back</span>
+    </button>
+  </div>
+  <div
+    class="flex flex-col space-y-10 w-11/12 sm:w-2/3 mx-auto py-10 border-[0.025rem] border-slate-200 dark:border-zinc-800 md:px-10 px-4 shadow-sm rounded-md"
+  >
+    <div class="flex flex-col space-y-2 items-start">
+      <h1
+        class="font-bold sm:text-xl md:text-3xl text-zinc-600 dark:text-white"
+      >
+        {{ data.title }}. "{{ data.type }}" ({{ data.release_year }})
+      </h1>
+      <div class="flex gap-2 items-center flex-wrap">
+        <div
+          class="border-[0.025rem] border-slate-300 dark:border-zinc-800 border-dashed py-2 px-2 rounded-md text-zinc-600 dark:text-white"
+        >
+          {{ data.rating }}
+        </div>
+        <p class="text-zinc-600 dark:text-white">
+          {{ formatDate(data.date_added) }}
+        </p>
+
+        <div class="flex space-x-2 items-center">
+          ·
+          <p
+            class="text-zinc-600 dark:text-white mx-1"
+            *ngFor="let item of data.listed_in; index as i"
+          >
+            {{ item }}
+            <span *ngIf="i < data.listed_in.length - 1">,</span>
+          </p>
+          ·
+        </div>
+        <p class="text-zinc-600 dark:text-white">{{ data.duration }}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-2 items start">
+      <h2 class="text-zinc-600 dark:text-white text-md md:text-xl">
+        Description:
+      </h2>
+      <p class="text-zinc-600 dark:text-white text-md md:text-lg">
+        {{ data.description }}
+      </p>
+    </div>
+
+    <div
+      class="flex flex-col item-start space-y-6 md:space-y-0 md:flex-row md:justify-between md:items-center"
+    >
+      <div class="flex flex-col space-y-2 items-start">
+        <h2 class="text-zinc-600 dark:text-white text-md md:text-xl">
+          Directed By:
+        </h2>
+        <p
+          class="text-zinc-600 dark:text-white text-md md:text-lg sm:w-2/3 md:w-64"
+        >
+          {{ data.director || "Unknown" }}
+        </p>
+      </div>
+      <div class="flex flex-col space-y-2 items-start md:w-2/3">
+        <h2 class="text-zinc-600 dark:text-white text-md md:text-xl">Cast:</h2>
+        <div
+          class="border-[0.025rem] flex gap-2 flex-wrap border-slate-300 dark:border-zinc-800 border-dashed py-2 px-2 rounded-md text-zinc-600 dark:text-white"
+        >
+          <p
+            class="text-zinc-600 dark:text-white mx-1"
+            *ngFor="let item of data.cast"
+          >
+            {{ item }}
+          </p>
+          <p
+            *ngIf="data.cast.length <= 1 && data.cast[0] === ''"
+            class="text-zinc-600 dark:text-white"
+          >
+            No record available
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

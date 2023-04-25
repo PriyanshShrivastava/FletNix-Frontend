@@ -1,8 +1,8 @@
 <div class="min-h-screen w-full bg-slate-50 dark:bg-black relative">
   <div
-    class="flex flex-col w-full px-6 sm:px-0 mx-auto space-y-4 items-start sm:w-9/12 lg:flex-row sm:justify-between sm:items-center sm:space-y-0 pt-16"
+    class="flex flex-col w-full px-6 sm:px-0 mx-auto space-y-4 items-start sm:w-9/12 lg:flex-row sm:justify-between sm:items-center lg:space-y-0 pt-16"
   >
-    <form class="w-11/12 sm:w-3/5 md:w-3/5">
+    <form class="w-11/12 lg:w-3/5">
       <label
         for="default-search"
         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -48,7 +48,7 @@
       </div>
     </form>
 
-    <form class="flex gap-4 items-center">
+    <form class="flex gap-4 items-center flex-wrap">
       <button
         type="button"
         (click)="fetchType('TV Show')"
@@ -56,7 +56,7 @@
           'bg-black text-white dark:bg-slate-300 dark:text-zinc-700':
             type === 'TV Show'
         }"
-        class="text-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        class="text-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:border-gray-600 dark:focus:ring-gray-700"
       >
         TV Shows
       </button>
@@ -67,7 +67,7 @@
           'bg-black text-white dark:bg-slate-300 dark:text-zinc-700':
             type === 'Movie'
         }"
-        class="text-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        class="text-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:border-gray-600 dark:focus:ring-gray-700"
       >
         Movies
       </button>
@@ -78,14 +78,14 @@
           'bg-black text-white dark:bg-slate-300 dark:text-zinc-700':
             type === ''
         }"
-        class="text-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        class="text-white border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:border-gray-600 dark:focus:ring-gray-700"
       >
         All
       </button>
     </form>
   </div>
   <div
-    class="flex flex-col w-full sm:w-9/12 mx-auto text-center gap-4 mt-8 py-20"
+    class="flex flex-col w-full sm:w-9/12 mx-auto text-center gap-4 mt-2 md:mt-8 py-20"
   >
     <div
       routerLink="/home/{{ item.show_id }}"
@@ -94,7 +94,7 @@
           | paginate
             : { itemsPerPage: 15, currentPage: p, totalItems: totalDocument }
       "
-      class="py-6 px-8 flex justify-between border-[0.025rem] border-slate-100 dark:border-zinc-700 rounded-lg hover:bg-slate-50 dark:hover:bg-zinc-900 cursor-pointer"
+      class="py-6 px-8 flex justify-between border-[0.025rem] border-dashed border-slate-300 dark:border-zinc-700 rounded-lg hover:bg-slate-50 dark:hover:bg-zinc-900 cursor-pointer"
     >
       <div class="flex flex-col space-y-3 items-start w-80">
         <p class="text-sm sm:text-lg text-zinc-700 dark:text-white text-left">
@@ -114,14 +114,14 @@
       <div class="flex flex-col space-y-3 text-zinc-700 dark:text-white w-60">
         <p class="text-sm sm:text-md">Directed by:</p>
         <p class="font-semibold text-sm sm:text-lg">
-          {{ item.director || "Not mentioned" }}
+          {{ item.director || "No records" }}
         </p>
       </div>
     </div>
   </div>
 
   <div class="absolute bottom-0 w-full text-center">
-    <div class="w-full py-2 dark:bg-gray-600">
+    <div class="w-full py-2 dark:bg-gray-600 text-md">
       <pagination-controls
         (click)="pageChange(p)"
         (pageChange)="p = $event"

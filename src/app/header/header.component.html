@@ -1,7 +1,7 @@
 <div
-  class="w-full flex justify-between bg-slate-50 dark:bg-gray-800 py-4 px-4 md:px-10 items-center"
+  class="w-full flex justify-between bg-slate-100 dark:bg-gray-800 py-4 px-4 md:px-10 items-center"
 >
-  <div class="w-10 h-10">
+  <div class="w-8 h-8 md:w-10 md:h-10">
     <img
       src="https://i.postimg.cc/YqRXBkYP/Screenshot-from-2023-04-24-17-42-08-removebg-preview-1.png"
       alt="logo"
@@ -13,31 +13,50 @@
     class="text-sm md:text-xl dark:text-white text-zinc-700"
   >
     Welcome ,
-    <span class="font-semibold dark:text-white text-zinc-700">{{
-      userName
-    }}</span>
+    <span class="font-semibold dark:text-white text-zinc-700">
+      {{ userName }}
+    </span>
   </h2>
-  <div class="flex gap-5 items-center">
-    <span
-      *ngIf="!isLoggedIn()"
-      class="dark:text-white text-zinc-700 cursor-pointer"
-      ><a routerLink="/register">Register</a></span
+  <div class="flex gap-5">
+    <div
+      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-xl group flex flex-col space-y-1"
     >
-    <span
+      <a routerLink="/home">Home</a>
+      <div
+        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+      ></div>
+    </div>
+    <div
       *ngIf="!isLoggedIn()"
-      class="dark:text-white text-zinc-700 cursor-pointer"
-      ><a routerLink="/">Login</a></span
+      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-xl group flex flex-col space-y-1"
     >
-    <span
+      <a routerLink="/register">Register</a>
+      <div
+        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+      ></div>
+    </div>
+    <div
+      *ngIf="!isLoggedIn()"
+      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-xl group flex flex-col space-y-1"
+    >
+      <a routerLink="/">Login</a>
+      <div
+        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+      ></div>
+    </div>
+    <div
       *ngIf="isLoggedIn()"
-      class="cursor-pointer"
-      class="dark:text-white text-zinc-700"
-      ><a (click)="logout()">Logout</a></span
+      class="dark:text-white text-zinc-700 text-sm md:text-xl group flex flex-col space-y-1 cursor-pointer"
     >
+      <a (click)="logout()">Logout</a>
+      <div
+        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+      ></div>
+    </div>
     <i
       class="fa-solid fa-{{
-        darkTheme ? 'sun' : 'moon'
-      }} text-lg cursor-pointer text-zinc-600 dark:text-white"
+        theme === 'dark' ? 'sun' : 'moon'
+      }}  cursor-pointer text-zinc-600 dark:text-white text-md md:text-lg"
       (click)="toggleTheme()"
     ></i>
   </div>

@@ -18,7 +18,19 @@ export class AuthService {
 
     if (auth) {
       this.user.next(auth.user);
-      this.router.navigate(['/home']);
+      if (this.router.url === '/register') {
+        this.router.navigate(['/home']);
+      } else if (this.router.url === '/home') {
+      }
+    }
+
+    const theme: string | null = localStorage.getItem('theme');
+    if (theme) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   }
 
