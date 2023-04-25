@@ -9,25 +9,32 @@ import { environment } from 'src/environments/environment.development';
 })
 export class AuthService {
   private loggedIn: boolean = false;
+  public user: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<{ token: string }> {
+  login(
+    email: string,
+    password: string
+  ): Observable<{ token: string; user: any }> {
     const credentials = { email: email, password: password };
     return this.http
-      .post<{ token: string }>(
+      .post<{ token: string; user: any }>(
         `${environment.apiBaseUrl}auth/login`,
         credentials
       )
       .pipe(
-        tap(() => {
+        tap((response) => {
           this.loggedIn = true;
+          localStorage.setItem('auth', JSON.stringify(response));
+          this.user.next(response.user);
         })
       );
   }
 
   logout(): void {
     localStorage.removeItem('auth');
+    this.user.next(null);
   }
 
   isLoggedIn(): boolean {

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class HomepageComponent {
   data: any[] = [];
+  totalDocument: number = 0;
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +18,7 @@ export class HomepageComponent {
       .get<any[]>(`${environment.apiBaseUrl}movies/shows/}`)
       .subscribe((response: any) => {
         this.data = response.shows;
+        this.totalDocument = response.totalCount;
       });
   }
 }
