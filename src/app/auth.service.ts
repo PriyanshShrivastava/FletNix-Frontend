@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.development';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +12,13 @@ export class AuthService {
   private loggedIn: boolean = false;
   public user: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     const authJson = localStorage.getItem('auth');
     const auth = authJson ? JSON.parse(authJson) : null;
 
     if (auth) {
       this.user.next(auth.user);
-      console.log(auth.user);
+      this.router.navigate(['/home']);
     }
   }
 
