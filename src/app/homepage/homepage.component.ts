@@ -13,6 +13,7 @@ export class HomepageComponent {
   p: number = 1;
   tokens: string = '';
   searchString: string = '';
+  type: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -34,26 +35,11 @@ export class HomepageComponent {
       });
   }
 
-  showTV() {
+  fetchType(type: string) {
+    this.type = type;
     this.http
       .get<any[]>(
-        `${environment.apiBaseUrl}movies/shows/${this.p}?&type=TV Show`,
-        {
-          headers: {
-            Authorization: this.tokens,
-          },
-        }
-      )
-      .subscribe((response: any) => {
-        this.data = response.shows;
-        this.totalDocument = response.totalCount;
-      });
-  }
-
-  showMovies() {
-    this.http
-      .get<any[]>(
-        `${environment.apiBaseUrl}movies/shows/${this.p}?&type=Movie`,
+        `${environment.apiBaseUrl}movies/shows/${this.p}?type=${this.type}&searchStr=${this.searchString}`,
         {
           headers: {
             Authorization: this.tokens,

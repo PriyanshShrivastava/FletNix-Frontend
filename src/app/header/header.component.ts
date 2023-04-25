@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  theme: string = 'moon';
+  darkTheme: boolean = false;
   public userName: string | null = '';
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -16,6 +18,15 @@ export class HeaderComponent {
     this.authService.user.subscribe((user: any) => {
       this.userName = user?.name.split(' ')[0];
     });
+  }
+
+  toggleTheme() {
+    this.darkTheme = !this.darkTheme;
+    if (this.darkTheme) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

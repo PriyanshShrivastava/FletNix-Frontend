@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     HeaderComponent,
     HomepageComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
