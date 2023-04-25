@@ -11,7 +11,15 @@ export class AuthService {
   private loggedIn: boolean = false;
   public user: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const authJson = localStorage.getItem('auth');
+    const auth = authJson ? JSON.parse(authJson) : null;
+
+    if (auth) {
+      this.user.next(auth.user);
+      console.log(auth.user);
+    }
+  }
 
   login(
     email: string,
