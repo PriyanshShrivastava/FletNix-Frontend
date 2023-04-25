@@ -1,4 +1,6 @@
-<div class="w-full flex justify-between bg-slate-50 py-4 px-10 items-center">
+<div
+  class="w-full flex justify-between bg-slate-50 py-4 px-4 md:px-10 items-center"
+>
   <div class="w-10 h-10">
     <img
       src="https://i.postimg.cc/YqRXBkYP/Screenshot-from-2023-04-24-17-42-08-removebg-preview-1.png"
@@ -6,17 +8,24 @@
       class="w-full"
     />
   </div>
-  <h2 *ngIf="isLoggedIn()" class="text-xl dark:text-white text-zinc-700">
+  <h2
+    *ngIf="isLoggedIn()"
+    class="textsm md:text-xl dark:text-white text-zinc-700"
+  >
     Welcome ,
     <span class="font-semibold dark:text-white text-zinc-700">{{
       userName
     }}</span>
   </h2>
   <div class="flex gap-3">
-    <span *ngIf="!isLoggedIn()" class="dark:text-white text-zinc-700"
+    <span
+      *ngIf="!isLoggedIn()"
+      class="dark:text-white text-zinc-700 cursor-pointer"
       ><a routerLink="/register">Register</a></span
     >
-    <span *ngIf="!isLoggedIn()" class="dark:text-white text-zinc-700"
+    <span
+      *ngIf="!isLoggedIn()"
+      class="dark:text-white text-zinc-700 cursor-pointer"
       ><a routerLink="/">Login</a></span
     >
     <span

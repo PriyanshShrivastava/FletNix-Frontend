@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  public userName: string | null = null;
+  public userName: string | null = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.user.subscribe((user) => {
-      this.userName = user?.name;
+    this.authService.user.subscribe((user: any) => {
+      this.userName = user?.name.split(' ')[0];
     });
   }
   isLoggedIn(): boolean {
