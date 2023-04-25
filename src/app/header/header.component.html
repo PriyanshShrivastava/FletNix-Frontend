@@ -1,0 +1,17 @@
+<div class="w-full flex justify-between bg-slate-200 py-4 px-10 items-center">
+  <div class="w-20 h-20">
+    <img
+      src="https://i.postimg.cc/YqRXBkYP/Screenshot-from-2023-04-24-17-42-08-removebg-preview-1.png"
+      alt="logo"
+      class="w-full"
+    />
+  </div>
+
+  <div class="flex gap-3">
+    <h2>Welcome</h2>
+    <span *ngIf="!isLoggedIn()"><a routerLink="/register">Login</a></span>
+    <span *ngIf="isLoggedIn()" class="cursor-pointer"
+      ><a (click)="logout()">Logout</a></span
+    >
+  </div>
+</div>
