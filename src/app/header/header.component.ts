@@ -8,7 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  public userName: string | null = '';
+  constructor(private authService: AuthService, private router: Router) {
+    const authJson = localStorage.getItem('auth');
+    const auth = authJson ? JSON.parse(authJson) : null;
+    this.userName = auth?.user?.name;
+  }
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

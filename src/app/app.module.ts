@@ -7,9 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HeaderComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HeaderComponent, HomepageComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
