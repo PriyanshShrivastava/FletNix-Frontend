@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
 
   // sign up handler function
   submitForm = (event: Event): void => {
-    console.log('function called');
     event.preventDefault();
     if (this.myForm.valid) {
       // constructing an object
