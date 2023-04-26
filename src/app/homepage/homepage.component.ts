@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -16,11 +17,33 @@ export class HomepageComponent {
   tokens: string = '';
   searchString: string = '';
   type: string = '';
-
+  searchInput = new Subject<string>(); //instance of the subject class
   constructor(
     private http: HttpClient,
     private ngxService: NgxUiLoaderService
-  ) {}
+  ) {
+    // Implementing debouncing
+
+    this.searchInput
+      .pipe(
+        debounceTime(300), // debounce for 300ms
+        distinctUntilChanged(), // only emit when the search query changes
+        switchMap((query: string) => {
+          return this.http.get<any[]>(
+            `${environment.apiBaseUrl}movies/shows/${this.p}?type=${this.type}&searchStr=${query}`,
+            {
+              headers: {
+                Authorization: this.tokens,
+              },
+            }
+          );
+        })
+      )
+      .subscribe((response: any) => {
+        this.data = response.shows;
+        this.totalDocument = response.totalCount;
+      });
+  }
 
   ngOnInit() {
     const auth = localStorage.getItem('auth');
@@ -94,20 +117,8 @@ export class HomepageComponent {
     return date.toLocaleDateString('en-US', options);
   }
 
-  // making a get request based on the search string
   searchStr() {
-    this.http
-      .get<any[]>(
-        `${environment.apiBaseUrl}movies/shows/${this.p}?type=${this.type}&searchStr=${this.searchString}`,
-        {
-          headers: {
-            Authorization: this.tokens,
-          },
-        }
-      )
-      .subscribe((response: any) => {
-        this.data = response.shows;
-        this.totalDocument = response.totalCount;
-      });
+    // subscribing to searchInput subject
+    this.searchInput.next(this.searchString);
   }
 }
