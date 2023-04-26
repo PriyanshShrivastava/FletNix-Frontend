@@ -48,4 +48,14 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+  isInRegisterPage() {
+    if (this.router.url === '/register') return true;
+    return false;
+  }
+
+  IsInLoginPage() {
+    if (this.router.url === '/') return true;
+    return false;
+  }
 }

@@ -23,25 +23,25 @@
     >
       <a routerLink="/home">Home</a>
       <div
-        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+        class="scale-0 group-hover:scale-100 bg-black dark:bg-white h-[2px] w-full transition-all duration-300"
       ></div>
     </div>
     <div
-      *ngIf="!isLoggedIn()"
+      *ngIf="!isLoggedIn() && !isInRegisterPage()"
       class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-lg group flex flex-col space-y-1"
     >
       <a routerLink="/register">Register</a>
       <div
-        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+        class="scale-0 group-hover:scale-100 bg-black dark:bg-white h-[2px] w-full transition-all duration-300"
       ></div>
     </div>
     <div
-      *ngIf="!isLoggedIn()"
+      *ngIf="!isLoggedIn() && !IsInLoginPage()"
       class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-lg group flex flex-col space-y-1"
     >
       <a routerLink="/">Login</a>
       <div
-        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+        class="scale-0 group-hover:scale-100 bg-black dark:bg-white h-[2px] w-full transition-all duration-300"
       ></div>
     </div>
     <div
@@ -50,7 +50,7 @@
     >
       <a (click)="logout()">Logout</a>
       <div
-        class="scale-0 group-hover:scale-100 bg-black h-[2px] w-full transition-all duration-300"
+        class="scale-0 group-hover:scale-100 bg-black dark:bg-white h-[2px] w-full transition-all duration-300"
       ></div>
     </div>
     <i
