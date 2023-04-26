@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  theme: string | null = localStorage.getItem('theme');
+  theme: string | null = localStorage.getItem('theme'); // getting theme valur from localStorage
   darkTheme: boolean = false;
   public userName: string | null = '';
 
@@ -19,11 +19,13 @@ export class HeaderComponent {
       localStorage.setItem('theme', 'light');
     }
 
+    // checking the authservice user for getting the username from localStorage
     this.authService.user.subscribe((user: any) => {
       this.userName = user?.name.split(' ')[0];
     });
   }
 
+  // a function to toggle theme
   toggleTheme() {
     this.darkTheme = !this.darkTheme;
     if (this.darkTheme) {
@@ -37,10 +39,11 @@ export class HeaderComponent {
     }
   }
 
+  // returning whether a user is logged in or not
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
-
+  //  redirecting and callig logout
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);

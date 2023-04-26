@@ -10,9 +10,12 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private loggedIn: boolean = false;
+  // creating a BehaviorSubject for user
   public user: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private http: HttpClient, private router: Router) {
+    // Checking for auth and setting username
+
     const authJson = localStorage.getItem('auth');
     const auth = authJson ? JSON.parse(authJson) : null;
 
@@ -24,6 +27,7 @@ export class AuthService {
       }
     }
 
+    // setting and getting theme values
     const theme: string | null = localStorage.getItem('theme');
     if (theme) {
       if (theme === 'dark') {
@@ -34,6 +38,7 @@ export class AuthService {
     }
   }
 
+  // login function (returns Observable)
   login(
     email: string,
     password: string
@@ -53,11 +58,13 @@ export class AuthService {
       );
   }
 
+  // handling logut
   logout(): void {
     localStorage.removeItem('auth');
     this.user.next(null);
   }
 
+  // checking the user is logged in or not
   isLoggedIn(): boolean {
     const token = localStorage.getItem('auth');
     return !!token; // Returns true if token is not null or undefined

@@ -11,6 +11,7 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
+  // checking whether the url is the homepage
   isHomePage() {
     return this.router.url === '/';
   }

@@ -19,7 +19,7 @@
   </h2>
   <div class="flex gap-5">
     <div
-      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-xl group flex flex-col space-y-1"
+      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-lg group flex flex-col space-y-1"
     >
       <a routerLink="/home">Home</a>
       <div
@@ -28,7 +28,7 @@
     </div>
     <div
       *ngIf="!isLoggedIn()"
-      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-xl group flex flex-col space-y-1"
+      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-lg group flex flex-col space-y-1"
     >
       <a routerLink="/register">Register</a>
       <div
@@ -37,7 +37,7 @@
     </div>
     <div
       *ngIf="!isLoggedIn()"
-      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-xl group flex flex-col space-y-1"
+      class="dark:text-white text-zinc-700 cursor-pointer text-sm md:text-lg group flex flex-col space-y-1"
     >
       <a routerLink="/">Login</a>
       <div
@@ -46,7 +46,7 @@
     </div>
     <div
       *ngIf="isLoggedIn()"
-      class="dark:text-white text-zinc-700 text-sm md:text-xl group flex flex-col space-y-1 cursor-pointer"
+      class="dark:text-white text-zinc-700 text-sm md:text-lg group flex flex-col space-y-1 cursor-pointer"
     >
       <a (click)="logout()">Logout</a>
       <div

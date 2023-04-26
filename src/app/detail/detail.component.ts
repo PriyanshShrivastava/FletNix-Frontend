@@ -14,6 +14,7 @@ export class DetailComponent {
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
   ngOnInit() {
+    // getting the id from url
     const id = this.route.snapshot.paramMap.get('id');
     console.log(id);
     const auth = localStorage.getItem('auth');
@@ -21,6 +22,8 @@ export class DetailComponent {
     if (auth) {
       this.tokens = JSON.parse(auth).token;
     }
+
+    // making a get request
     this.http
       .get<any[]>(`${environment.apiBaseUrl}movies/single-show/${id}`, {
         headers: {
@@ -32,6 +35,7 @@ export class DetailComponent {
       });
   }
 
+  // function for changing the date string to a radable date
   formatDate(dateString: string): string {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = {

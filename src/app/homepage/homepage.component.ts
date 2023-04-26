@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent {
+  // All the variable needed to make an APi call
   data: any[] = [];
   totalDocument: number = 0;
   p: number = 1;
@@ -23,6 +24,8 @@ export class HomepageComponent {
     if (auth) {
       this.tokens = JSON.parse(auth).token;
     }
+
+    // Making an api call to get the data from database
     this.http
       .get<any[]>(`${environment.apiBaseUrl}movies/shows/`, {
         headers: {
@@ -35,6 +38,7 @@ export class HomepageComponent {
       });
   }
 
+  // fecthing data based on user choice
   fetchType(type: string) {
     this.type = type;
     this.http
@@ -52,6 +56,7 @@ export class HomepageComponent {
       });
   }
 
+  // function to make an api call based on the page change event
   pageChange(p: number) {
     this.http
       .get<any[]>(`${environment.apiBaseUrl}movies/shows/${p}`, {
@@ -64,6 +69,8 @@ export class HomepageComponent {
         this.totalDocument = response.totalCount;
       });
   }
+
+  // function to format date in a redabale format
   formatDate(dateString: string): string {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = {
@@ -74,6 +81,7 @@ export class HomepageComponent {
     return date.toLocaleDateString('en-US', options);
   }
 
+  // making a get request based on the search string
   searchStr() {
     this.http
       .get<any[]>(

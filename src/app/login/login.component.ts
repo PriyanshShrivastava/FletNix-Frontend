@@ -9,11 +9,14 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
   constructor(private router: Router, private authService: AuthService) {}
+
+  // creating an object for a two way binding
   public data = {
     email: '',
     password: '',
   };
 
+  // login handler function
   onLogin = () => {
     this.authService.login(this.data.email, this.data.password).subscribe(
       (response) => {

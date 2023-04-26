@@ -6,12 +6,15 @@ import { AuthGuard } from 'src/auth.guard';
 import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
+  // Register route
   { path: 'register', component: RegisterComponent },
+  // Main home route (protected)
   {
     path: 'home',
     component: HomepageComponent,
     canActivate: [AuthGuard],
   },
+  // Specific page route (protected)
   {
     path: 'home/:id',
     component: DetailComponent,

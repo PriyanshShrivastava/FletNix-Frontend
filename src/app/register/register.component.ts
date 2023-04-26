@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment.development';
 })
 export class RegisterComponent {
   constructor(private http: HttpClient, private router: Router) {}
+
+  // Object to get data from the input
   public data = {
     name: '',
     email: '',
@@ -17,6 +19,7 @@ export class RegisterComponent {
     age: '',
   };
 
+  // sign up handler function
   onSignUp = () => {
     console.log(this.data);
     this.http
