@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Loggin In');
           setTimeout(() => {
             this.router.navigate(['/home']);
-          }, 1000);
+          }, 2500);
         },
         (error) => {
           this.toastr.error('Opss! Wrong Credentials');
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       this.toastr.error('Opss! Wrong Credentials');
       setTimeout(() => {
         this.myForm.reset();
-      }, 1000);
+      }, 2500);
     }
   };
 }

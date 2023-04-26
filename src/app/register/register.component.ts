@@ -52,11 +52,12 @@ export class RegisterComponent implements OnInit {
             this.toastr.success('Account Created Succesfully ');
             setTimeout(() => {
               this.router.navigate(['/']);
-            }, 1000);
+            }, 2500);
           } else {
-            this.toastr.error(
-              'Error creating account. Please try again later.'
-            );
+            this.toastr.error(data.message);
+            setTimeout(() => {
+              this.myForm.reset();
+            }, 2500);
           }
         },
         (error) => {
@@ -70,7 +71,7 @@ export class RegisterComponent implements OnInit {
 
       setTimeout(() => {
         this.myForm.reset();
-      }, 1000);
+      }, 2500);
     }
   };
 }

@@ -41,7 +41,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
       blur: 10,
     }),
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 2500,
       progressBar: true,
       progressAnimation: 'increasing',
       preventDuplicates: true,
