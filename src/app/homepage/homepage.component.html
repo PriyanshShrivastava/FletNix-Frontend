@@ -80,6 +80,12 @@
   <div
     class="flex flex-col w-full sm:w-9/12 mx-auto text-center gap-4 mt-2 md:mt-8 pt-20 pb-28 md:pt-20 md:pb-20 px-2 md:px-0"
   >
+    <p
+      class="text-md sm:text-lg text-zinc-700 dark:text-white"
+      *ngIf="data.length === 0"
+    >
+      Sorry! No Result Found!
+    </p>
     <div
       routerLink="/home/{{ item.show_id }}"
       *ngFor="
