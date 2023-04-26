@@ -1,5 +1,18 @@
+<ngx-ui-loader
+  fgsColor="#000"
+  overlayColor="rbga(255,255,255,1)"
+  text="Fetching..."
+  pbColor="#000"
+  fgsType="three-strings"
+></ngx-ui-loader>
 <app-header></app-header>
 <ng-container *ngIf="isHomePage()">
   <app-login></app-login>
 </ng-container>
-<router-outlet></router-outlet>
+
+<!-- Dynamic content  -->
+
+<div ngxUiLoaderBlurred>
+  <!-- Content to be blurred -->
+  <router-outlet></router-outlet>
+</div>

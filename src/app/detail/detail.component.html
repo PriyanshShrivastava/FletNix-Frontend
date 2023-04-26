@@ -10,7 +10,7 @@
   <div
     class="flex flex-col space-y-10 w-11/12 sm:w-2/3 mx-auto py-10 border-[0.025rem] border-slate-200 dark:border-zinc-800 md:px-10 px-4 shadow-sm rounded-md"
   >
-    <div class="flex flex-col space-y-2 items-start">
+    <div class="flex flex-col space-y-6 md:space-y-3 items-start">
       <h1
         class="font-bold sm:text-xl md:text-3xl text-zinc-600 dark:text-white"
       >
@@ -39,6 +39,9 @@
         </div>
         <p class="text-zinc-600 dark:text-white">{{ data.duration }}</p>
       </div>
+      <p *ngIf="data.country" class="text-zinc-600 dark:text-white">
+        Country: <span class="font-semibold">{{ data.country }}</span>
+      </p>
     </div>
 
     <div class="flex flex-col space-y-2 items start">
@@ -58,15 +61,15 @@
           Directed By:
         </h2>
         <p
-          class="text-zinc-600 dark:text-white text-md md:text-lg sm:w-2/3 md:w-64"
+          class="text-zinc-600 dark:text-white text-md md:text-lg sm:w-2/3 md:w-64 font-semibold"
         >
-          {{ data.director || "Unknown" }}
+          {{ data.director || "No record" }}
         </p>
       </div>
       <div class="flex flex-col space-y-2 items-start md:w-2/3">
         <h2 class="text-zinc-600 dark:text-white text-md md:text-xl">Cast:</h2>
         <div
-          class="border-[0.025rem] flex gap-2 flex-wrap border-slate-300 dark:border-zinc-800 border-dashed py-2 px-2 rounded-md text-zinc-600 dark:text-white"
+          class="border-[0.025rem] flex gap-2 flex-wrap border-slate-300 dark:border-zinc-700 border-dashed py-2 px-2 rounded-md text-zinc-600 dark:text-white"
         >
           <p
             class="text-zinc-600 dark:text-white mx-1"
@@ -75,7 +78,7 @@
             {{ item }}
           </p>
           <p
-            *ngIf="data.cast.length <= 1 && data.cast[0] === ''"
+            *ngIf="!data.cast || (data.cast.length <= 1 && data.cast[0] === '')"
             class="text-zinc-600 dark:text-white"
           >
             No record available

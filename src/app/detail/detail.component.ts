@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { environment } from 'src/environments/environment.development';
 
 @Component({
@@ -12,11 +13,15 @@ export class DetailComponent {
   data: any = {};
   tokens: string = '';
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private ngxService: NgxUiLoaderService
+  ) {}
   ngOnInit() {
     // getting the id from url
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
+    this.ngxService.start();
     const auth = localStorage.getItem('auth');
 
     if (auth) {
@@ -31,6 +36,7 @@ export class DetailComponent {
         },
       })
       .subscribe((response: any) => {
+        this.ngxService.stop();
         this.data = response.show;
       });
   }

@@ -13,6 +13,7 @@ import { DetailComponent } from './detail/detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomepageComponent,
     DetailComponent,
   ],
+
+  // Import modules for the components to use
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +34,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
+    NgxUiLoaderModule.forRoot({
+      fgsSize: 100,
+      hasProgressBar: false,
+      bgsOpacity: 0.6,
+      blur: 10,
+    }),
     ToastrModule.forRoot({
       timeOut: 1000,
       progressBar: true,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-homepage',
@@ -16,11 +17,15 @@ export class HomepageComponent {
   searchString: string = '';
   type: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private ngxService: NgxUiLoaderService
+  ) {}
 
   ngOnInit() {
     const auth = localStorage.getItem('auth');
-
+    // starting the loader until we get the response back
+    this.ngxService.start();
     if (auth) {
       this.tokens = JSON.parse(auth).token;
     }
@@ -33,6 +38,7 @@ export class HomepageComponent {
         },
       })
       .subscribe((response: any) => {
+        this.ngxService.stop();
         this.data = response.shows;
         this.totalDocument = response.totalCount;
       });
@@ -40,6 +46,7 @@ export class HomepageComponent {
 
   // fecthing data based on user choice
   fetchType(type: string) {
+    this.ngxService.start();
     this.type = type;
     this.http
       .get<any[]>(
@@ -51,6 +58,7 @@ export class HomepageComponent {
         }
       )
       .subscribe((response: any) => {
+        this.ngxService.stop();
         this.data = response.shows;
         this.totalDocument = response.totalCount;
       });
@@ -58,13 +66,18 @@ export class HomepageComponent {
 
   // function to make an api call based on the page change event
   pageChange(p: number) {
+    this.ngxService.start();
     this.http
-      .get<any[]>(`${environment.apiBaseUrl}movies/shows/${p}`, {
-        headers: {
-          Authorization: this.tokens,
-        },
-      })
+      .get<any[]>(
+        `${environment.apiBaseUrl}movies/shows/${this.p}?type=${this.type}&searchStr=${this.searchString}`,
+        {
+          headers: {
+            Authorization: this.tokens,
+          },
+        }
+      )
       .subscribe((response: any) => {
+        this.ngxService.stop();
         this.data = response.shows;
         this.totalDocument = response.totalCount;
       });
@@ -85,7 +98,7 @@ export class HomepageComponent {
   searchStr() {
     this.http
       .get<any[]>(
-        `${environment.apiBaseUrl}movies/shows/${this.p}?searchStr=${this.searchString}`,
+        `${environment.apiBaseUrl}movies/shows/${this.p}?type=${this.type}&searchStr=${this.searchString}`,
         {
           headers: {
             Authorization: this.tokens,
