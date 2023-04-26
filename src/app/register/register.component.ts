@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Initialising form validation
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
     console.log('function called');
     event.preventDefault();
     if (this.myForm.valid) {
+      // constructing an object
       const data = {
         name: this.myForm.controls['name'].value,
         email: this.myForm.controls['email'].value,
