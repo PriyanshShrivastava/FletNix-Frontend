@@ -28,11 +28,13 @@ export class LoginComponent implements OnInit {
   submitForm = (event: Event): void => {
     event.preventDefault();
     if (this.myForm.valid) {
+      // populating email and password value
       const data = {
         email: this.myForm.controls['email'].value,
         password: this.myForm.controls['password'].value,
       };
 
+      // subscribing to authservice login
       this.authService.login(data.email, data.password).subscribe(
         (response) => {
           localStorage.setItem('auth', JSON.stringify(response));
