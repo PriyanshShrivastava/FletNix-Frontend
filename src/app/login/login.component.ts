@@ -1,31 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  constructor(private router: Router, private authService: AuthService) {}
+export class LoginComponent implements OnInit {
+  myForm!: FormGroup;
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toastr: ToastrService,
+    private fb: FormBuilder
+  ) {}
 
-  // creating an object for a two way binding
-  public data = {
-    email: '',
-    password: '',
-  };
-
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
   // login handler function
-  onLogin = () => {
-    this.authService.login(this.data.email, this.data.password).subscribe(
-      (response) => {
-        localStorage.setItem('auth', JSON.stringify(response));
-        this.router.navigate(['/home']);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  submitForm = (event: Event): void => {
+    event.preventDefault();
+    if (this.myForm.valid) {
+      const data = {
+        email: this.myForm.controls['email'].value,
+        password: this.myForm.controls['password'].value,
+      };
+
+      this.authService.login(data.email, data.password).subscribe(
+        (response) => {
+          localStorage.setItem('auth', JSON.stringify(response));
+          this.toastr.success('Loggin In');
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          }, 1500);
+        },
+        (error) => {
+          this.toastr.error('Opss! Wrong Credentials');
+          this.myForm.reset();
+        }
+      );
+    } else {
+      this.toastr.error('Opss! Wrong Credentials');
+      setTimeout(() => {
+        this.myForm.reset();
+      }, 1500);
+    }
   };
 }
