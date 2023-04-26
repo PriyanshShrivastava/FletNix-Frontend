@@ -1,6 +1,30 @@
-# FletnixFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+# FletNix
+
+FletNix is a search and filtering app for TV shows and movies available on Netflix. With all the textual data about the shows, FletNix allows users to easily search and filter through the list of TV shows and movies. Whether you're looking for a specific show or trying to narrow down your options, FletNix has got you covered.
+
+## Features
+
+- User authentication - Users can create accounts and log in securely to access the app's features.
+
+- Age restriction - FletNix restricts "R" rated content for users below a certain age.
+
+- Search functionality - Users can search for specific TV shows or movies by title or keyword.
+
+- Filter functionality - Filter the content on the basis of type (TV Shows / Movies)
+
+- Dark or Light theme - FletNix offers users the choice of a dark or light theme for optimal viewing experience.
+
+## Screenshots
+
+![Register Page](https://user-images.githubusercontent.com/89379595/234605615-5ba1c5aa-f872-4018-9095-8014de2337c4.png)
+
+![Homepage](https://user-images.githubusercontent.com/89379595/234605795-540c2340-216a-49c6-8b45-da9142441532.png)
+
+![Description page](https://user-images.githubusercontent.com/89379595/234605889-fadeb920-6e44-49cc-bf3e-80a59c3cb184.png)
+
+![Smartphone view](https://user-images.githubusercontent.com/89379595/234606253-fbdd25ca-fdc5-451a-bf94-76de13d5a557.png)
+
 
 ## Development server
 
@@ -25,3 +49,34 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Tech Stack  : **MEAN**
+
+Technology and Packages used:
+
+**Front end:**
+- Angular - A component based js Framework to build UI.
+- ngx-ui-loader: A package to show loading animation.
+
+
+**Back end:**
+- Nodejs - A run time environment for JS.
+- Expressjs - A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.    
+
+**Database:**
+- MongoDB - MongoDB is an open-source document database and leading NoSQL database.
+
+**Hosting:**
+- Vercel
+
+
+## Authors
+
+- [Priyansh Shrivastava](https://www.github.com/PriyanshShrivastava)
+
+
+
+## Documentation
+
+
+[Angular Documentation](https://angular.io/docs).
