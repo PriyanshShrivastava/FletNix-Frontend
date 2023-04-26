@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,11 @@ export class HeaderComponent {
   darkTheme: boolean = false;
   public userName: string | null = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     if (!localStorage.getItem('theme')) {
@@ -45,8 +50,11 @@ export class HeaderComponent {
   }
   //  redirecting and callig logout
   logout(): void {
+    this.toastr.success('Logging out');
     this.authService.logout();
-    this.router.navigate(['/']);
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 1000);
   }
 
   isInRegisterPage() {

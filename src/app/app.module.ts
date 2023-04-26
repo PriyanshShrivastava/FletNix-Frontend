@@ -32,7 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgxPaginationModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 1500,
+      timeOut: 1000,
       progressBar: true,
       progressAnimation: 'increasing',
       preventDuplicates: true,

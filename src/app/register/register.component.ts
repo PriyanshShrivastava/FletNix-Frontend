@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
             this.toastr.success('Account Created Succesfully ');
             setTimeout(() => {
               this.router.navigate(['/']);
-            }, 1500);
+            }, 1000);
           } else {
             this.toastr.error(
               'Error creating account. Please try again later.'
@@ -71,7 +71,7 @@ export class RegisterComponent implements OnInit {
 
       setTimeout(() => {
         this.myForm.reset();
-      }, 1500);
+      }, 1000);
     }
   };
 }
