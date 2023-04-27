@@ -9,9 +9,13 @@ FletNix is a search and filtering app for TV shows and movies available on Netfl
 
 - Age restriction - FletNix restricts "R" rated content for users below a certain age.
 
+- Paginated list - User will see a paginated list of 15 items per page.
+
 - Search functionality - Users can search for specific TV shows or movies by title or keyword.
 
 - Filter functionality - Filter the content on the basis of type (TV Shows / Movies)
+
+- Detail page - User can click on any of the Movie/TV Show box and get much more detail about that particular item.
 
 - Dark or Light theme - FletNix offers users the choice of a dark or light theme for optimal viewing experience.
 
@@ -25,6 +29,37 @@ FletNix is a search and filtering app for TV shows and movies available on Netfl
 
 ![Smartphone view](https://user-images.githubusercontent.com/89379595/234606253-fbdd25ca-fdc5-451a-bf94-76de13d5a557.png)
 
+## Installation
+
+Install Fletnix Fronend with npm
+
+- Clone this repo
+```bash
+git clone https://github.com/PriyanshShrivastava/FletNix-Frontend.git
+
+```
+
+- Navigate to the project directory:
+```bash
+cd FletNix-Frontend
+
+```
+
+- Install the dependencies:
+
+```bash
+npm install
+
+```
+- Start the server:
+
+```bash
+npm start (considering you have @angular/cli already installed)
+```
+- Incase you have not already installed angular/cli, run this command before starting the server :
+```bash
+sudo npm install -g @angylar/cli
+```
 
 ## Development server
 
@@ -69,6 +104,10 @@ Technology and Packages used:
 **Hosting:**
 - Vercel
 
+## Contributions
+
+This repository is for an assignment and contributions are not accepted at this time. Thank you for your understanding.
+
 
 ## Authors
 
@@ -79,4 +118,8 @@ Technology and Packages used:
 ## Documentation
 
 
-[Angular Documentation](https://angular.io/docs).
+- [Angular Documentation](https://angular.io/docs).
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details.
