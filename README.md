@@ -56,9 +56,9 @@ npm install
 ```bash
 npm start (considering you have @angular/cli already installed)
 ```
-- Incase you have not already installed angular/cli, run this command before starting the server :
+- Incase you have not already installed angular/cli globally, run this command before starting the server :
 ```bash
-sudo npm install -g @angylar/cli
+sudo npm i -g @angular/cli
 ```
 
 ## Development server
@@ -91,6 +91,7 @@ Technology and Packages used:
 
 **Front end:**
 - Angular - A component based js Framework to build UI.
+- TailwindCSS - Tailwind CSS is a utility-first CSS framework.
 - ngx-ui-loader: A package to show loading animation.
 
 
