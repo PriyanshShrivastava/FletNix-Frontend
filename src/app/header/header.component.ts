@@ -54,7 +54,7 @@ export class HeaderComponent {
     this.authService.logout();
     setTimeout(() => {
       this.router.navigate(['/']);
-    }, 1000);
+    }, 2500);
   }
 
   isInRegisterPage() {
